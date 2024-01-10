@@ -47,7 +47,7 @@ describe('BooksController (e2e)', () => {
       .send(newBook)
       .expect(201);
 
-    const bookId: number = book.body.id;
+    const bookId = book.body.id;
 
     await request(app.getHttpServer()).delete(`/books/${bookId}`).expect(200);
     return request(app.getHttpServer())
@@ -82,7 +82,13 @@ describe('BooksController (e2e)', () => {
       .get(`/books/${bookId}/avg-pages`)
       .expect(200);
 
-    return expect(avg.body.average).toBe('10.00');
+    expect(avg.body.average).toBe('10.00');
+
+    await request(app.getHttpServer()).delete(`/books/${bookId}`).expect(200);
+
+    return request(app.getHttpServer())
+      .delete(`/authors/${authorId}`)
+      .expect(200);
   });
 
   afterAll(async () => {
