@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
@@ -9,9 +10,7 @@ import { Author } from '../authors/entities/author.entity';
 @Injectable()
 export class BooksService {
   constructor(
-    // eslint-disable-next-line no-unused-vars
     @InjectRepository(Book) private readonly bookRepository: Repository<Book>,
-    // eslint-disable-next-line no-unused-vars
     @InjectRepository(Author)
     private readonly authorRepository: Repository<Author>,
   ) {}

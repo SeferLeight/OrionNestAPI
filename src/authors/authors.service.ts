@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateAuthorDto } from './dto/create-author.dto';
 import { UpdateAuthorDto } from './dto/update-author.dto';
