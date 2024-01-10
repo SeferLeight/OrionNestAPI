@@ -1,10 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Book } from './entities/book.entity';
 import { In, Repository } from 'typeorm';
-import { Author } from 'src/authors/entities/author.entity';
+import { Author } from '../authors/entities/author.entity';
 
 @Injectable()
 export class BooksService {
@@ -39,6 +39,7 @@ export class BooksService {
       where: { id },
       relations: { authors: true },
     });
+    if (!book) throw new BadRequestException('Book not found');
     return book;
   }
 
@@ -59,13 +60,13 @@ export class BooksService {
 
   async remove(id: number) {
     const book = await this.findOne(id);
-    if (!book) return null;
+    if (!book) throw new BadRequestException('Book not found');
     return await this.bookRepository.remove(book);
   }
 
   async pagesChapterProm(id: number) {
     const book = await this.findOne(id);
-    if (!book) return null;
+    if (!book) throw new BadRequestException('Book not found');
     return {
       id: String(book.id),
       average: String((book.pages / book.chapters).toFixed(2)),

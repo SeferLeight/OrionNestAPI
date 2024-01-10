@@ -32,7 +32,7 @@ El código debe ser enteramente desarrollado en Typescript.
 $ npm install
 ```
 
-## Add MySQL
+## Add MySQL BD with docker
 
 ```bash
 $ docker compose up -d
@@ -54,12 +54,6 @@ $ npm run start:prod
 ## Test
 
 ```bash
-# unit tests
-$ npm run test
-
 # e2e tests
 $ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```

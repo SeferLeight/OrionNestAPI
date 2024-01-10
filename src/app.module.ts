@@ -17,7 +17,6 @@ import { Author } from './authors/entities/author.entity';
       password: 'root',
       database: 'orion_test',
       synchronize: true,
-      autoLoadEntities: true,
       entities: [Book, Author],
     }),
   ],

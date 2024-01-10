@@ -26,7 +26,7 @@ export class BooksController {
     return this.booksService.findOne(id);
   }
 
-  @Get('PagesChapterAvg/:id')
+  @Get(':id/avg-pages')
   pagesChapterProm(@Param('id') id: number) {
     return this.booksService.pagesChapterProm(id);
   }
